@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>WEATHER|SEARCH</title>
+</head>
+<body>
+
+	<div style="text-align: center">
+	<h1>TRANSCEND WEATHER APP</h1>
+	<marquee>Get your forecast 24/7</marquee>
+
+	<h4>Enter city to search for current weather</h4>
+	
+	<p>City: <input id="search-txt" type="text" name="city" placeholder="Enter name of city"></p>
+	<button id="btn" onclick="return weatherC()">Search</button>
+</div>
+	
+
+
+<p><b>City Name: </b><div id="city_name"></div></p>
+	<h3>Weather Condition</h3>
+<p><b>Main Weather:</b> <div id="weather_main"></div>
+<p><b>Weather Description:</b><div id="weather_desc"></div>
+<p><b>Wind Speed:</b><div id="wind_speed"></div>
+<p><b>Pressure:</b>	<div id="pressure_"></div>
+<p><b>Humidity:</b>	<div id="humidity_"></div>
+<p><b>Temperature:</b><div id="temp"></div>
+
+
+	<script type="text/javascript">
+		
+
+let searchInput = document.getElementById("search-txt")
+
+searchInput.addEventListener("keyup", enterPressed)
+
+
+		function enterPressed(event) {
+  if (event.key === "Enter") {
+    weatherC();
+  }
+}
+
+		function weatherC(){
+
+			
+
+		fetch('https://api.openweathermap.org/data/2.5/weather?q=' + searchInput.value + '&appid=e1fac841df2abd11e5275333838f08da')
+		.then(function(resp) { return resp.json()})
+		.then(function(data){
+			weather2(data);
+		})
+		.catch(function() {
+    // catch any errors
+  });
+	}
+	window.onload = function() {
+  weatherC();
+}
+
+	function weather2(data){
+
+		document.getElementById('weather_main').innerHTML = data.weather[0].main;
+		document.getElementById('weather_desc').innerHTML = data.weather[0].description;
+	    document.getElementById('wind_speed').innerHTML = Number(data.wind.speed) + "m/s";
+		document.getElementById('pressure_').innerHTML = Number(data.main.pressure) + "Pa";
+		document.getElementById('humidity_').innerHTML = Number(data.main.humidity) + "%";
+		document.getElementById('temp').innerHTML = Number(data.main.temp) + "deg";
+		document.getElementById('city_name').innerHTML =data.name;
+
+	}
+
+
+	
+
+	
+
+
+	</script>
+
+
+
+</body>
+</html>

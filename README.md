@@ -1,0 +1,1 @@
+This is a weather app that helps with locating the weather in different cities
