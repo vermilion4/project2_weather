@@ -1,1 +1,1 @@
-This is a weather app that helps with locating the weather in different cities
+This is a weather app that helps with locating the weather in different cities, it also includes a server for home, login and upload of files.
