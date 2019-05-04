@@ -37,11 +37,11 @@ http.createServer(function(req, res){
 
 	else if(path == '/login')
 	{
-		res.write('<div style="text-align:center;padding-top:20%"><h1>LOGIN PAGE</h1>')
+		res.write('<form action="" method="post" style="text-align:center;padding-top:20%"><h1>LOGIN PAGE</h1>')
 		res.write('<h3>Please enter your login details</h3>')
 		res.write('<p>Username: <input type="text" name="uname" placeholder="Enter Username"/></p>')
 		res.write('<p>Password: <input type="password" name="pword" placeholder="Enter Password"/></p>')
-		res.write('<input type="submit" name="submit" value="LOGIN"/></div>')
+		res.write('<input type="submit" name="submit" value="LOGIN"/></form>')
 	}
 else 
 {
